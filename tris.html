@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gioco di Tris</title>
+    <style>
+        .cell {
+            width: 60px;
+            height: 60px;
+            border: 1px solid;
+            text-align: center;
+            vertical-align: middle;
+            line-height: 60px;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        var board = [
+            ['', '', ''],
+            ['', '', ''],
+            ['', '', '']
+        ];
+        var currentPlayer = 'X';
+
+        function cellClicked(row, col) {
+            if (board[row][col] == '') {
+                board[row][col] = currentPlayer;
+                document.getElementById('cell' + row + col).innerText = currentPlayer;
+                currentPlayer = currentPlayer == 'X' ? 'O' : 'X';
+            }
+        }
+    </script>
+</head>
+<body>
+    <table>
+        <tr>
+            <td class="cell" id="cell00" onclick="cellClicked(0, 0)"></td>
+            <td class="cell" id="cell01" onclick="cellClicked(0, 1)"></td>
+            <td class="cell" id="cell02" onclick="cellClicked(0, 2)"></td>
+        </tr>
+        <tr>
+            <td class="cell" id="cell10" onclick="cellClicked(1, 0)"></td>
+            <td class="cell" id="cell11" onclick="cellClicked(1, 1)"></td>
+            <td class="cell" id="cell12" onclick="cellClicked(1, 2)"></td>
+        </tr>
+        <tr>
+            <td class="cell" id="cell20" onclick="cellClicked(2, 0)"></td>
+            <td class="cell" id="cell21" onclick="cellClicked(2, 1)"></td>
+            <td class="cell" id="cell22" onclick="cellClicked(2, 2)"></td>
+        </tr>
+    </table>
+</body>
+</html>
