@@ -1,126 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <title>My Page Title</title>
+  
 <style>
-    /* Style The Dropdown Button */
-    .dropbtn {
-      background-color: #4CAF50;
-      color: white;
-      padding: 16px;
-      font-size: 16px;
-      border: none;
-      cursor: pointer;
-    }
-    
-    /* The container <div> - needed to position the dropdown content */
-    .dropdown {
-      position: relative;
-      display: inline-block;
-    }
-    
-    /* Dropdown Content (Hidden by Default) */
-    .dropdown-content {
-      display: none;
-      position: absolute;
-      background-color: #f9f9f9;
-      min-width: 160px;
-      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-      z-index: 1;
-    }
-    
-    /* Links inside the dropdown */
-    .dropdown-content a {
-      color: black;
-      padding: 12px 16px;
-      text-decoration: none;
-      display: block;
-    }
-    
-    /* Change color of dropdown links on hover */
-    .dropdown-content a:hover {background-color: #f1f1f1}
-    
-    /* Show the dropdown menu on hover */
-    .dropdown:hover .dropdown-content {
-      display: block;
-    }
-    
-    /* Change the background color of the dropdown button when the dropdown content is shown */
-    .dropdown:hover .dropbtn {
-      background-color: #3e8e41;
-    }
-    </style>
-    <h1><a style="text-decoration:none;" href="https://messigoatronaldobleah.github.io/bassi-bonfiglio-love.github.io/" >🠔</a></h1>
-    <center>
-    <div class="dropdown">
-      <button class="dropbtn">siti</button>
-      <left>
-        <div class="dropdown-content">
-        <a href="https://www.youtube.com/">YouTube</a>
-        <a href="https://it.wikipedia.org/wiki/Lingua_twi">Lingua Twi</a>
-        <a href="https://european-union.europa.eu/index_it">UE</a>
-      </left>
-    </center>
+.navbar {
+  text-align: center;
+}
+
+.dropbtn {
+  background-color: rgb(252, 51, 51);
+  color: rgb(255, 230, 0);
+  padding: 60px;
+  font-size: 50px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #ff393900;
+  min-width: 150px;
+  box-shadow: 0px 10px 18px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 22px 26px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+ 
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #FFFFFF;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: orange;
+  text-align: center;
+  padding: 20px 24px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #454;
+}
+ 
+</style>
+</head>
+<body>
+<h1><a style="text-decoration:none;" href="https://ilpiccolobassi.github.io/borghetti/" >🠔</a></h1>
+<h2>Barra di Navigazione</h2>
+<ul>
+<li><div class="dropdown">
+    <button class="dropbtn">videogames</button>
+    <div class="dropdown-content">
+    <a href="https://supercell.com/en/">supercell</a>
+    <a href="https://www.ubisoft.com/it-it/">ubisoft</a>
+    <a href="https://www.naughtydog.com/">naughty dog</a>
     </div>
+  </div>
+</li>
+ 
+  <li><div class="dropdown">
+      <button class="dropbtn">sports web</button>
+      <div class="dropdown-content">
+      <a href="https://www.acmilan.com/it/">milan</a>
+      <a href="https://www.ilcosenza.it/">cosenza</a>
+      <a href="https://store.inter.it/it-it/?gad_source=1&gclid=Cj0KCQjw_-GxBhC1ARIsADGgDjsS56r2s6B1bn93qZgfm-gbeAdCEw0JQgEq8M4kN4_mtzjihh1iBssaAvaNEALw_wcB">scimmie</a>
+      </div>
+  </div>
+</li>
+ 
+<li><div class="dropdown">
+    <button class="dropbtn">Social</button>
+    <div class="dropdown-content">
+    <a href="https://www.instagram.com/">Instagram</a>
+    <a href="https://www.facebook.com/?locale=it_IT">Facebook</a>
+    <a href="https://www.tiktok.com/login?redirect_url=https%3A%2F%2Fwww.tiktok.com%2F&lang=en&enter_method=mandatory">TikTok</a>
     </div>
-    <nav>
-
-      <ul>
-
-          <li class="dropdown"><a href="#" class="dropbtn">Home</a>
-
-              <div class="dropdown-content">
-
-                  <a href="#">Categoria 1</a>
-
-                  <a href="#">Categoria 2</a>
-
-                  <a href="#">Categoria 3</a>
-
-              </div>
-
-          </li>
-
-          <li class="dropdown"><a href="#" class="dropbtn">News</a>
-
-              <div class="dropdown-content">
-
-                  <a href="#">Categoria 1</a>
-
-                  <a href="#">Categoria 2</a>
-
-                  <a href="#">Categoria 3</a>
-
-              </div>
-
-          </li>
-
-          <li class="dropdown"><a href="#" class="dropbtn">Contatti</a>
-
-              <div class="dropdown-content">
-
-                  <a href="#">Categoria 1</a>
-
-                  <a href="#">Categoria 2</a>
-
-                  <a href="#">Categoria 3</a>
-
-              </div>
-
-          </li>
-
-          <li class="dropdown"><a href="#" class="dropbtn">About</a>
-
-              <div class="dropdown-content">
-
-                  <a href="#">Categoria 1</a>
-
-                  <a href="#">Categoria 2</a>
-
-                  <a href="#">Categoria 3</a>
-
-              </div>
-
-          </li>
-
-          <li><a href="../alessiomazza07.github.io/index.html"><i class="fa-solid fa-circle-chevron-left"></i>Torna all'index</a></li>
-
-      </ul>
-
-  </nav>
+  </div>
+</li>
+ 
+<li><div class="dropdown">
+    <button class="dropbtn">abbigliamento</button>
+    <div class="dropdown-content">
+    <a href="https://www.amazon.it/?&tag=goitab-21&ref=pd_sl_781ozcfkw6_e&adgrpid=156928205950&hvpone=&hvptwo=&hvadid=672253294785&hvpos=&hvnetw=g&hvrand=10951423243006167209&hvqmt=e&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=1008451&hvtargid=kwd-10573980&hydadcr=10841_2191052">Amazone</a>
+    <a href="https://www.pandabuy.com/">pandabuy</a>
+    <a href="https://www.vinted.it/">vinted</a>
+    </div>
+  </div>
+</li>
+</ul>
+</body>
+</html>
