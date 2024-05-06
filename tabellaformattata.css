@@ -1,0 +1,40 @@
+body{
+
+
+}
+
+table {
+
+    border: 1px solid black;
+
+    table-layout: fixed;
+
+    border-spacing: 0px;
+
+    background-color: #FFF;
+
+    font-size: large;
+
+    margin: 20vh auto;
+
+}
+
+table th, table td, table tr{
+
+    background-color: rgb(186, 245, 230);
+
+    width: 105px;
+
+    border: 1px solid black;
+
+    font-family:  'Lucida Sans Unicode','Trebuchet MS', 'Lucida Grande', 'Lucid';
+
+    text-align: center;
+
+}
+
+table th{
+
+    background-color: rgb(6, 255, 243);
+
+}
