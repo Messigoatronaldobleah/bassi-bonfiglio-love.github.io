@@ -100,7 +100,7 @@ body{
 
             width: auto;
 
-            margin: 3% 6%;
+            margin: 2% 6%;
 
             float: left;
 
@@ -108,13 +108,13 @@ body{
 
             font-size: 152%;
 
-            padding: 3% 6%;
+            padding: 2% 6%;
 
         }
 
         #articoli{
 
-            background-color: rgb(251, 255, 0);
+            background-color: rgb(236, 192, 110);
             
 
             height: 13vh;
