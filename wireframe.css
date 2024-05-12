@@ -1,4 +1,3 @@
-
 body{
 
     margin: 0;
@@ -157,7 +156,17 @@ body{
 
             height: 3vh;
 
-            margin: 13vh 4vh 0 0;
+            margin: 13vh 4vh 0 1vh;
+
+        }
+
+        #search input{
+
+            border-color: black;
+
+            border-radius: 2px;
+
+            border-width: 2px;
 
         }
 
@@ -183,23 +192,29 @@ body{
 
         }
 
+        #sprite{
+
+            width: 92.8px;
+
+            height: 90px;
+
+            background: url('sprite (1).jpg') -10px -10px;
+
+        }
+
         #Logo{
 
             box-sizing: border-box;
 
-            background-color: rgb(255, 255, 255);
+            height: fit-content;
 
-            height: 10vh;
+            width: fit-content;
 
-            width: 8%;
-
-            padding: 3vh 0;
-
-            text-align: center;
+            padding: 0;
 
             float: left;
 
-            margin: 5vh auto 5vh 2%;
+            margin: 2.5vh auto 0 2%;
 
         }
 
@@ -231,7 +246,17 @@ body{
 
         }
 
+        #info h1{
+
+            margin: 0;
+
+        }
+
         #info{
+
+            box-sizing: border-box;
+
+            padding-top: 1vh;
 
             background-color: rgb(37, 251, 69);
 
@@ -239,7 +264,7 @@ body{
 
             width: auto;
 
-            margin: 4vh 4vh 0 4vh;
+            margin: 4vh 2vh 0 2vh;
 
             clear: left;
 
@@ -255,7 +280,7 @@ body{
 
             height: 10vh;
 
-            width: 20vh;
+            width: 26vh;
 
             padding-top: 2vh;
 
@@ -281,7 +306,7 @@ body{
 
             height: 10vh;
 
-            width: 20vh;
+            width: 26vh;
 
             padding-top: 2vh;
 
@@ -389,3 +414,4 @@ li a:hover, .dropdown:hover .dropbtn {
 
 }
 
+/*fine navbar dropdown*/
