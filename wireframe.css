@@ -6,7 +6,7 @@ body{
 
 .estremo{
 
-            background-color: rgb(51, 252, 252);
+            background-color: rgb(255, 215, 36);
 
             height: 20vh;
 
@@ -18,7 +18,7 @@ body{
 
         .centro{
 
-            background-color: rgb(160, 179, 232);
+            background-color: rgb(250, 243, 145);
 
             float: left;
 
@@ -276,7 +276,7 @@ body{
 
             box-sizing: border-box;
 
-            background-color: rgb(75, 129, 255);
+            background-color: rgb(250, 243, 145);
 
             height: 10vh;
 
@@ -302,7 +302,7 @@ body{
 
             box-sizing: border-box;
 
-            background-color: rgb(75, 129, 255);
+            background-color: rgb(250, 243, 145);
 
             height: 10vh;
 
@@ -328,7 +328,7 @@ body{
 
 nav {
 
-    background-color: rgb(75, 129, 255);
+    background-color: rgb(250, 243, 145);
 
 }
 
@@ -368,7 +368,7 @@ li a, .dropbtn {
 
 li a:hover, .dropdown:hover .dropbtn {
 
-    background-color: rgb(103, 237, 255);
+    background-color: rgb(251, 255, 0);
 
     font-size: x-large;
 
@@ -380,7 +380,7 @@ li a:hover, .dropdown:hover .dropbtn {
 
     position: absolute;
 
-    background-color: rgb(75, 129, 255);
+    background-color: rgb(250, 243, 145);
 
     min-width: 160px;
 
@@ -404,7 +404,7 @@ li a:hover, .dropdown:hover .dropbtn {
 
 .dropdown-content a:hover {
 
-    background-color: rgb(103, 237, 255);
+    background-color: rgb(251, 255, 0);
 
 }
 
