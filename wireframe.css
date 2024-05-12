@@ -80,7 +80,7 @@ body{
 
             margin: 3% 5% 0 5%;
 
-            background-color: rgb(144, 252, 72);
+            background-color: rgb(236, 192, 110);
 
             padding-top: 4vh;
 
@@ -114,7 +114,8 @@ body{
 
         #articoli{
 
-            background-color: rgb(144, 252, 72);
+            background-color: rgb(236, 192, 110);
+            
 
             height: 13vh;
 
@@ -134,7 +135,7 @@ body{
 
         #articoli div{
 
-            background-color: rgb(76, 177, 9);
+            background-color: rgb(236, 192, 110);
 
             width: 10%;
 
