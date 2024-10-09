@@ -58,7 +58,7 @@
 
     </div>
     <div class="top-row">
-        <div class="box"><input type="text"> </div>
+        <div class="box1"><input type="text"> </div>
      
     </div>
 
@@ -71,13 +71,34 @@
             <button onclick="calculate('=')">=</button>
         </div>
     </div>
-    <div class="bottom-row">
-        <div class="small-box">=</div>
-    </div>
+   
     </div>
     <div class="top-row">
         <div class="box"> <input type="text"> </div>
     </div>
+    <script>
+        function calculate(operation){
+            const num1=parseFloat(document.getElementyById("num1").value);
+            const num2=parseFloat(document.getElementyById("num2").value);
+            let result;
+            switch(operation){
+                case '+':
+                result=num1+num2
+                break;
+                case '-':
+                result= num1-num2;
+                break;
+                case 'x':
+                    result=num1*num2;
+                    break;
+                case '%':a
+                result=num1/num2;
+                break;
+            }
+            document.getElementById('result1').innerText=result;
+        }
+        
+    </script>
     
 </body>
 </html>
