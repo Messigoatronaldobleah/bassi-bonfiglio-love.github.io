@@ -7,24 +7,49 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             margin-top: 50px;
         }
-        input, button {
+        input {
+            width: 200px;
             padding: 10px;
-            margin: 5px;
-            font-size: 16px;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        button {
+            padding: 10px 15px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+        #output {
+            margin-top: 20px;
+            font-size: 24px;
         }
     </style>
 </head>
 <body>
 
     <h1>Calcolatrice Semplice</h1>
-    <input type="text" id="expression" placeholder="Inserisci un'espressione">
+    <input type="text" id="input" placeholder="Esempio: 2 + 2" />
     <button onclick="calcola()">Calcola</button>
-    <p id="risultato"></p>
+    <div id="output"></div>
 
+    <script>
+        function calcola() {
+            const input = document.getElementById('input').value;
+            const output = document.getElementById('output');
 
+            try {
+                // Utilizziamo eval per calcolare l'espressione
+                const risultato = eval(input);
+                output.textContent = "Risultato: " + risultato;
+            } catch (error) {
+                output.textContent = "Errore: " + error.message;
+            }
+        }
+    </script>
 
 </body>
 </html>
