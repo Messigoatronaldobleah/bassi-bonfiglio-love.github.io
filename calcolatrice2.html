@@ -8,7 +8,7 @@
         body {
             font-family: Arial, sans-serif;
             display: flex;
-            flex-direction: column;
+            flex-direction: Arial;
             align-items: center;
             margin-top: 50px;
         }
@@ -35,19 +35,14 @@
     <input type="text" id="input" placeholder="Esempio: 2 + 2" />
     <button onclick="calcola()">Calcola</button>
     <div id="output"></div>
-
+    
     <script>
+
         function calcola() {
             const input = document.getElementById('input').value;
             const output = document.getElementById('output');
 
-            try {
-                // Utilizziamo eval per calcolare l'espressione
-                const risultato = eval(input);
-                output.textContent = "Risultato: " + risultato;
-            } catch (error) {
-                output.textContent = "Errore: " + error.message;
-            }
+           
         }
     </script>
 
