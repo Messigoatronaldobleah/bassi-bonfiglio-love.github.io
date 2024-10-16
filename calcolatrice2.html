@@ -32,18 +32,22 @@
 <body>
 
     <h1>Calcolatrice Semplice</h1>
-    <input type="text" id="input" placeholder="Esempio: 2 + 2" />
+    <input type="text" id="input"  />
     <button onclick="calcola()">Calcola</button>
     <div id="output"></div>
     
     <script>
-     
+        let risultato;
         function calcola() {
             const input = document.getElementById('input').value;
-            const output = document.getElementById('output');
+              document.getElementById('output');
 
            
         }
+        function stampaRisultato(){
+            document.getElementById('output').value=risultato;
+        }
+
     </script>
 
 </body>
