@@ -77,8 +77,8 @@
                 input.value = ''; // Pulisce l'input per il secondo valore
             } else {
                 const secondValue = parseFloat(input.value);
-                const result = calculate(firstValue, secondValue, currentOperation);
-                document.getElementById('output').value = result;
+                const a = calculate(firstValue, secondValue, currentOperation);
+                document.getElementById('output').value = arguments;
                 firstValue = null; // Resetta il primo valore per un'altra operazione
                 currentOperation = null; // Resetta l'operazione
                 input.value = ''; // Pulisce l'input per una nuova operazione
