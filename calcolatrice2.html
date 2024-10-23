@@ -86,15 +86,16 @@
         function calculate(first, second, operator) {
             switch (operator) {
                 case '+':
-                    return first + second;
+                    return   document.getElementById('output').value = first + second;
+                  
                 case '-':
-                    return first - second;
+                    return  document.getElementById('output').value = first - second;
+                   
                 case '*':
-                    return first * second;
+                    return  document.getElementById('output').value = first * second;
                 case '/':
-                    return second !== 0 ? first / second : 'Errore: Divisione per zero';
-                default:
-                    return 'Errore!';
+                    return  document.getElementById('output').value = second !== 0 ? first / second : 'Errore: Divisione per zero';
+                
             }
         }
     </script>
