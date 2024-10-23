@@ -3,52 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calcolatrice Semplice</title>
+    <title>Calcolatrice Interattiva</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             display: flex;
-            flex-direction: Arial;
+            justify-content: center;
             align-items: center;
-            margin-top: 50px;
+            height: 100vh;
+            background-color: #f4f4f4;
         }
+
+        .calculator {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
         input {
-            width: 200px;
+            width: 100%;
             padding: 10px;
-            margin-bottom: 10px;
-            font-size: 18px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
         }
+
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+
         button {
-            padding: 10px 15px;
-            font-size: 18px;
+            padding: 10px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: white;
             cursor: pointer;
+            flex: 1;
+            margin: 0 5px;
         }
-        #output {
-            margin-top: 20px;
-            font-size: 24px;
+
+        button:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
 <body>
+    <div class="calculator">
+        <input type="text" id="input" placeholder="Inserisci valore" />
+        <div class="buttons">
+            <button onclick="setOperation('+')">+</button>
+            <button onclick="setOperation('-')">-</button>
+            <button onclick="setOperation('*')">*</button>
+            <button onclick="setOperation('/')">/</button>
+        </div>
+        <input type="text" id="output" placeholder="Risultato" readonly />
+    </div>
 
-    <h1>Calcolatrice Semplice</h1>
-    <input type="text" id="input"  />
-    <button onclick="calcola()">Calcola</button>
-    <div id="output"></div>
-    
     <script>
-        let risultato;
-        function calcola() {
-            const input = document.getElementById('input').value;
-              document.getElementById('output');
+        let firstValue = null;
+        let currentOperation = null;
 
-           
-        }
-        function stampaRisultato(){
-            document.getElementById('output').value=risultato;
+        function setOperation(operator) {
+            const input = document.getElementById('input');
+            if (firstValue === null) {
+                firstValue = parseFloat(input.value);
+                currentOperation = operator;
+                input.value = ''; // Pulisce l'input per il secondo valore
+            } else {
+                const secondValue = parseFloat(input.value);
+                const result = calculate(firstValue, secondValue, currentOperation);
+                document.getElementById('output').value = result;
+                firstValue = null; // Resetta il primo valore per un'altra operazione
+                currentOperation = null; // Resetta l'operazione
+                input.value = ''; // Pulisce l'input per una nuova operazione
+            }
         }
 
+        function calculate(first, second, operator) {
+            switch (operator) {
+                case '+':
+                    return first + second;
+                case '-':
+                    return first - second;
+                case '*':
+                    return first * second;
+                case '/':
+                    return second !== 0 ? first / second : 'Errore: Divisione per zero';
+                default:
+                    return 'Errore!';
+            }
+        }
     </script>
-
 </body>
 </html>
