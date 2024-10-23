@@ -59,6 +59,7 @@
             <button onclick="setOperation('-')">-</button>
             <button onclick="setOperation('*')">*</button>
             <button onclick="setOperation('/')">/</button>
+            <button onclick="setOperation('=')">/</button>
         </div>
         <input type="text" id="output" placeholder="Risultato" readonly />
     </div>
@@ -66,6 +67,7 @@
     <script>
         let firstValue = null;
         let currentOperation = null;
+        let a=null;
 
         function setOperation(operator) {
             const input = document.getElementById('input');
@@ -86,15 +88,19 @@
         function calculate(first, second, operator) {
             switch (operator) {
                 case '+':
-                    return   document.getElementById('output').value = first + second;
+                    return   a = first + second;
                   
                 case '-':
-                    return  document.getElementById('output').value = first - second;
+                    return  a= first - second;
                    
                 case '*':
-                    return  document.getElementById('output').value = first * second;
+                    return  a = first * second;
                 case '/':
-                    return  document.getElementById('output').value = second !== 0 ? first / second : 'Errore: Divisione per zero';
+                    return  a = second !== 0 ? first / second : 'Errore: Divisione per zero';
+
+                case '=':
+                    return  a = second !== 0 ? first / second : 'Errore: Divisione per zero';
+                   
                 
             }
         }
