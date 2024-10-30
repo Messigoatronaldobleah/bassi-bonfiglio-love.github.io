@@ -18,7 +18,7 @@
             padding: 20px;
             background-color: rgb(0, 0, 0);
         }
-        #risultato {
+        #result {
             width: 100%;
             height: 40px;
             font-size: 24px;
@@ -46,7 +46,7 @@
 <body>
     
 <div class="calculator">
-    <input type="text" id="risultato" disabled>
+    <input type="text" id="result" disabled>
     <div> 
         <button onclick="appendToResult('1')">1</button>
         <button onclick="appendToResult('2')">2</button>
@@ -82,20 +82,20 @@
 </div>
 
 <script>
-    function appendToResult(a) {
-        document.getElementById('risultato').a += a;
+    function appendToResult(value) {
+        document.getElementById('result').value += value;
     }
 
     function clearResult() {
-        document.getElementById('risultato').a = '';
+        document.getElementById('result').value = '';
     }
 
     function calculateResult() {
-        const resultField = document.getElementById('risultato');
+        const resultField = document.getElementById('result');
         try {
-            resultField.a = eval(resultField.a);
+            resultField.value = eval(resultField.value);
         } catch {
-            resultField.a = ' ';
+            resultField.value = 'Errore';
         }
     }
 </script>
