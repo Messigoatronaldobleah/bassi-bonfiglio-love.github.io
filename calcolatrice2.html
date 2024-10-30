@@ -60,11 +60,11 @@
     <div class="calcolatrice">
         <input type="text" id="input" placeholder=" " />
         <div class="buttons">
-            <button onclick="setOperation('+')">+</button>
-            <button onclick="setOperation('-')">-</button>
-            <button onclick="setOperation('*')">*</button>
-            <button onclick="setOperation('/')">/</button>
-            <button onclick="setOperation('=')">=</button>
+            <button onclick="Operazioni('+')">+</button>
+            <button onclick="Operazioni('-')">-</button>
+            <button onclick="Operazioni('*')">*</button>
+            <button onclick="Operazioni('/')">/</button>
+            <button onclick="Operazioni('=')">=</button>
         </div>
         <input type="text" id="output" placeholder=" " readonly />
     </div>
@@ -74,7 +74,7 @@
         let b = null;
         let a=null;
 
-        function setOperation(operator) {
+        function Operazioni(operator) {
             const input = document.getElementById('input');
             if (primo === null) {
                 primo = parseFloat(input.value);
