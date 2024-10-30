@@ -3,77 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calcolatrice Semplice</title>
+    <title>Calcolatrice</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #f4f4f4;
+            background-color: #f0f0f0;
         }
-
         .calculator {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        input {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
             border: 1px solid #ccc;
-            border-radius: 5px;
+            border-radius: 10px;
+            padding: 20px;
+            background-color: white;
         }
-
-        .buttons {
-            display: flex;
-            justify-content: space-between;
+        #result {
+            width: 100%;
+            height: 40px;
+            font-size: 24px;
+            text-align: right;
+            margin-bottom: 10px;
         }
-
         button {
-            padding: 10px;
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
             margin: 5px;
-            border: none;
-            border-radius: 5px;
-            background-color: #007BFF;
-            color: white;
-            cursor: pointer;
-            flex: 1;
-            margin: 0 5px;
-        }
-
-        button:hover {
-            background-color: #0056b3;
         }
     </style>
 </head>
 <body>
-    <div class="calculator">
-        <input type="text" id="input" placeholder="Inserisci operazione (es. 5 + 3)">
-        <div class="buttons">
-            <button onclick="calculate('+')">+</button>
-            <button onclick="calculate('-')">-</button>
-            <button onclick="calculate('*')">*</button>
-            <button onclick="calculate('%')">%</button>
-        </div>
-        <input type="text" id="output" placeholder="Risultato" readonly>
-    </div>
-    <script>
-        function calculate(operator) {
-            const input = document.getElementById('input').value;
-            const output = document.getElementById('output');
 
-            try {
-                const result = eval(input.replace(/\s/g, '') + operator);
-                output.value = result;
-            } catch (error) {
-                output.value = 'Errore!';
-            }
+<div class="calculator">
+    <input type="text" id="result" disabled>
+    <div>
+        <button onclick="clearResult()">C</button>
+        <button onclick="appendToResult('7')">7</button>
+        <button onclick="appendToResult('8')">8</button>
+        <button onclick="appendToResult('9')">9</button>
+        <button onclick="appendToResult('/')">/</button>
+    </div>
+    <div>
+        <button onclick="appendToResult('4')">4</button>
+        <button onclick="appendToResult('5')">5</button>
+        <button onclick="appendToResult('6')">6</button>
+        <button onclick="appendToResult('*')">*</button>
+    </div>
+    <div>
+        <button onclick="appendToResult('1')">1</button>
+        <button onclick="appendToResult('2')">2</button>
+        <button onclick="appendToResult('3')">3</button>
+        <button onclick="appendToResult('-')">-</button>
+    </div>
+    <div>
+        <button onclick="appendToResult('0')">0</button>
+        <button onclick="calculateResult()">=</button>
+        <button onclick="appendToResult('.')">.</button>
+        <button onclick="appendToResult('+')">+</button>
+    </div>
+</div>
+
+<script>
+    function appendToResult(value) {
+        document.getElementById('result').value += value;
+    }
+
+    function clearResult() {
+        document.getElementById('result').value = '';
+    }
+
+    function calculateResult() {
+        const resultField = document.getElementById('result');
+        try {
+            resultField.value = eval(resultField.value);
+        } catch {
+            resultField.value = 'Errore';
         }
-    </script>
+    }
+</script>
+
 </body>
 </html>
