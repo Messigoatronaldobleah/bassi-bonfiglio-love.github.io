@@ -12,7 +12,7 @@
             height: 100vh;
             background-color: #ccc;
         }
-        .calculator {
+        .Calcolatrice {
             border: 1px solid #000000;
             border-radius: 10px;
             padding: 20px;
@@ -38,7 +38,7 @@
 </head>
 <body>
 
-<div class="calculator">
+<div class="Calcolatrice">
     <input type="text" id="result" disabled>
     <div> 
         <button onclick="numeri('1')">1</button>
@@ -74,20 +74,20 @@
 </div>
 
 <script>
-    function numeri(a) {
-        document.getElementById('risultato').a += a;
+    function appendToDisplay(value) {
+        document.getElementById("display").value += value;
     }
 
-    function cancella() {
-        document.getElementById('risultato').a = '';
+    function clearDisplay() {
+        document.getElementById("display").value = '';
     }
 
-    function risultat() {
-        const b = document.getElementById('risultato');
+    function calculate() {
+        const display = document.getElementById("display");
         try {
-            nuovaa.a = eval(nuovaa.a);
-        } catch {
-            nuovaa.a = '';
+            display.value = eval(display.value);
+        } catch (error) {
+            display.value = 'Errore';
         }
     }
 </script>
