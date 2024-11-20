@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inserimento Dati Anagrafici</title>
+    <title>anagrafica 1.0</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -27,7 +27,7 @@
         button {
             padding: 10px 15px;
             background-color: #fdfdfd;
-            color: white;
+            color: rgb(0, 0, 0);
             border: none;
             cursor: pointer;
         }
@@ -52,9 +52,9 @@
 </head>
 <body>
 
-    <h1>Inserimento Dati Anagrafici</h1>
+    <h1>Anagrafica 1.0</h1>
 
-    <!-- Form di inserimento dati -->
+  
     <div class="form-container">
         <label for="nome">Nome:</label>
         <input type="text" id="nome" placeholder="Inserisci il nome">
@@ -77,7 +77,7 @@
         <button onclick="inserisciDati()">OK</button>
     </div>
 
-    <!-- Tabella per visualizzare la matrice dei dati -->
+  
     <div class="matrice-container">
         <h2>Dati Inseriti:</h2>
         <table id="matrice">
@@ -91,19 +91,19 @@
                     <th>Codice Fiscale</th>
                 </tr>
             </thead>
-            <tbody>
-                <!-- I dati inseriti verranno aggiunti qui -->
-            </tbody>
+            <body2>
+          
+            </body2>
         </table>
     </div>
 
     <script>
-        // Array che fungerà da matrice per i dati
+      
         let matrice = [];
 
-        // Funzione che inserisce i dati nella matrice e li visualizza nella tabella
+   
         function inserisciDati() {
-            // Recupera i dati dai campi di input
+          
             const nome = document.getElementById("nome").value;
             const cognome = document.getElementById("cognome").value;
             const indirizzo = document.getElementById("indirizzo").value;
@@ -111,15 +111,14 @@
             const email = document.getElementById("email").value;
             const cf = document.getElementById("cf").value;
 
-            // Controlla se tutti i campi sono compilati
+         
             if (nome && cognome && indirizzo && citta && email && cf) {
-                // Aggiungi i dati alla matrice
+           
                 matrice.push([nome, cognome, indirizzo, citta, email, cf]);
 
-                // Visualizza i dati nella tabella
+             
                 aggiornaTabella();
 
-                // Pulisce i campi di input
                 document.getElementById("nome").value = '';
                 document.getElementById("cognome").value = '';
                 document.getElementById("indirizzo").value = '';
@@ -127,16 +126,13 @@
                 document.getElementById("email").value = '';
                 document.getElementById("cf").value = '';
             } else {
-                alert("Per favore, compila tutti i campi.");
+                alert("Non hai inserito i campi chiesti.");
             }
         }
 
-        // Funzione per aggiornare la tabella con i dati della matrice
         function aggiornaTabella() {
-            const tableBody = document.getElementById("matrice").getElementsByTagName("tbody")[0];
-            tableBody.innerHTML = ''; // Pulisce la tabella prima di aggiornarla
-
-            // Aggiunge ogni riga della matrice alla tabella
+            const tableBody = document.getElementById("matrice").getElementsByTagName("body2")[0];
+            tableBody.innerHTML = '';
             matrice.forEach((riga) => {
                 const newRow = tableBody.insertRow();
                 riga.forEach((cellData) => {
