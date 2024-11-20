@@ -86,14 +86,14 @@
     
     function calculateResult() {
         const resultField = document.getElementById('result');
-        let expression = resultField.value;
+        let  risultato = resultField.value;
 
         try {
             
-            expression = expression.replace(/\s+/g, '');
+            risultato = risultato.replace(/\s+/g, '');
 
           
-            let result = calculateExpression(expression);
+            let result = calcolaRisultato(risultato);
             
             resultField.value = result;
         } catch {
@@ -101,12 +101,12 @@
         }
     }
 
-    function calculateExpression(expression) {
+    function calcolaRisultato(risultato) {
        
         let regex = /(\d+(\.\d+)?)([*/])(\d+(\.\d+)?)/g;
 
-        while (regex.test(expression)) {
-            expression = expression.replace(regex, (match, num1, _, operator, num2) => {
+        while (regex.test(risultato)) {
+            risultato = risultato.replace(regex, (match, num1, _, operator, num2) => {
                 num1 = parseFloat(num1);
                 num2 = parseFloat(num2);
                 if (operator === '*') return num1 * num2;
@@ -117,8 +117,8 @@
      
         regex = /(\d+(\.\d+)?)([+-])(\d+(\.\d+)?)/g;
 
-        while (regex.test(expression)) {
-            expression = expression.replace(regex, (match, num1, _, operator, num2) => {
+        while (regex.test(risultato)) {
+            risultato = risultato.replace(regex, (match, num1, _, operator, num2) => {
                 num1 = parseFloat(num1);
                 num2 = parseFloat(num2);
                 if (operator === '+') return num1 + num2;
@@ -126,7 +126,7 @@
             });
         }
 
-        return parseFloat(expression); 
+        return parseFloat(risultato); 
     }
 </script>
 
