@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calcolatrice</title>
     <style>
-     body {
+        body {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -31,72 +31,103 @@
             font-size: 24px;
             background-color: #ffa600;
             margin: 5px;
-        }     
-        buttone2 {
-            width: 60px;
-            height: 60px;
-            font-size: 44px;
-            background-color: #ffa600;
-            margin: 5px;
-        }    
-        
-   </style>
-</head>
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:active {
+            background-color: #f0a500;
+        }
+    </style>
 </head>
 <body>
-    
+
 <div class="calculator">
     <input type="text" id="result" disabled>
-    <div> 
+    <div>
         <button onclick="appendToResult('1')">1</button>
         <button onclick="appendToResult('2')">2</button>
         <button onclick="appendToResult('3')">3</button>
-        <buttone2 onclick="clearResult()">CANC<br></buttone2>
+        <button onclick="clearResult()">C</button>
     </div>
     <div>
-        
         <button onclick="appendToResult('4')">4</button>
         <button onclick="appendToResult('5')">5</button>
         <button onclick="appendToResult('6')">6</button>
     </div>
-    <div>   
+    <div>
         <button onclick="appendToResult('7')">7</button>
         <button onclick="appendToResult('8')">8</button>
         <button onclick="appendToResult('9')">9</button>
-    
     </div>
-<div> 
-    <button onclick="appendToResult('0')">0</button>
-    <button onclick="appendToResult('+')">+</button>
-    <button onclick="appendToResult('/')">/</button>
-</div>     
-
-
+    <div>
+        <button onclick="appendToResult('0')">0</button>
+        <button onclick="appendToResult('+')">+</button>
+        <button onclick="appendToResult('/')">/</button>
+    </div>
     <div>
         <button onclick="appendToResult('*')">*</button>
         <button onclick="appendToResult('-')">-</button>
         <button onclick="calculateResult()">=</button>
-        
     </div>
-  
 </div>
 
 <script>
+    // Funzione per aggiungere valori all'input
     function appendToResult(value) {
         document.getElementById('result').value += value;
     }
 
+    // Funzione per cancellare l'input
     function clearResult() {
         document.getElementById('result').value = '';
     }
 
+    // Funzione per calcolare il risultato senza l'uso di eval()
     function calculateResult() {
         const resultField = document.getElementById('result');
+        let expression = resultField.value;
+
         try {
-            resultField.value = eval(resultField.value);
+            // Rimuove gli spazi vuoti dall'espressione
+            expression = expression.replace(/\s+/g, '');
+
+            // Operazioni matematiche di base: +, -, *, /
+            let result = calculateExpression(expression);
+            
+            resultField.value = result;
         } catch {
             resultField.value = 'Errore';
         }
+    }
+
+    // Funzione per eseguire il calcolo delle operazioni
+    function calculateExpression(expression) {
+        // Iniziamo con il calcolo delle divisioni e moltiplicazioni
+        let regex = /(\d+(\.\d+)?)([*/])(\d+(\.\d+)?)/g;
+
+        while (regex.test(expression)) {
+            expression = expression.replace(regex, (match, num1, _, operator, num2) => {
+                num1 = parseFloat(num1);
+                num2 = parseFloat(num2);
+                if (operator === '*') return num1 * num2;
+                if (operator === '/') return num1 / num2;
+            });
+        }
+
+        // Poi calcoliamo somma e sottrazione
+        regex = /(\d+(\.\d+)?)([+-])(\d+(\.\d+)?)/g;
+
+        while (regex.test(expression)) {
+            expression = expression.replace(regex, (match, num1, _, operator, num2) => {
+                num1 = parseFloat(num1);
+                num2 = parseFloat(num2);
+                if (operator === '+') return num1 + num2;
+                if (operator === '-') return num1 - num2;
+            });
+        }
+
+        return parseFloat(expression); // restituiamo il risultato finale
     }
 </script>
 
