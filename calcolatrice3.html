@@ -73,26 +73,26 @@
 </div>
 
 <script>
-    // Funzione per aggiungere valori all'input
+   
     function appendToResult(value) {
         document.getElementById('result').value += value;
     }
 
-    // Funzione per cancellare l'input
+   
     function clearResult() {
         document.getElementById('result').value = '';
     }
 
-    // Funzione per calcolare il risultato senza l'uso di eval()
+    
     function calculateResult() {
         const resultField = document.getElementById('result');
         let expression = resultField.value;
 
         try {
-            // Rimuove gli spazi vuoti dall'espressione
+            
             expression = expression.replace(/\s+/g, '');
 
-            // Operazioni matematiche di base: +, -, *, /
+          
             let result = calculateExpression(expression);
             
             resultField.value = result;
@@ -101,9 +101,8 @@
         }
     }
 
-    // Funzione per eseguire il calcolo delle operazioni
     function calculateExpression(expression) {
-        // Iniziamo con il calcolo delle divisioni e moltiplicazioni
+       
         let regex = /(\d+(\.\d+)?)([*/])(\d+(\.\d+)?)/g;
 
         while (regex.test(expression)) {
@@ -115,7 +114,7 @@
             });
         }
 
-        // Poi calcoliamo somma e sottrazione
+     
         regex = /(\d+(\.\d+)?)([+-])(\d+(\.\d+)?)/g;
 
         while (regex.test(expression)) {
@@ -127,7 +126,7 @@
             });
         }
 
-        return parseFloat(expression); // restituiamo il risultato finale
+        return parseFloat(expression); 
     }
 </script>
 
