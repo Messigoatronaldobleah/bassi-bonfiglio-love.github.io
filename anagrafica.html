@@ -1,145 +1,128 @@
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>anagrafica 1.0</title>
+    <title>Inserimento Dati Anagrafici</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 20px;
-            padding: 20px;
-            background-color: #d5f3f8;
-        }
-        .form-container {
-            margin-bottom: 20px;
-        }
-        label {
-            display: block;
-            margin: 5px 0;
-        }
-        input {
-            width: 300px;
-            padding: 8px;
-            margin: 5px 0;
-            display: block;
-        }
-        button {
-            padding: 10px 15px;
-            background-color: #fdfdfd;
-            color: rgb(0, 0, 0);
-            border: none;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #1db925;
-        }
-        .matrice-container {
-            margin-top: 20px;
         }
         table {
             width: 100%;
             border-collapse: collapse;
+            margin-top: 20px;
         }
         table, th, td {
             border: 1px solid black;
         }
         th, td {
-            padding: 8px;
+            padding: 10px;
             text-align: left;
+        }
+        input {
+            margin-bottom: 10px;
+            padding: 8px;
+            width: 200px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
         }
     </style>
 </head>
 <body>
 
-    <h1>Anagrafica 1.0</h1>
+    <h1>Inserisci Dati Anagrafici</h1>
 
-  
-    <div class="form-container">
-        <label for="nome">Nome:</label>
-        <input type="text" id="nome" placeholder="Inserisci il nome">
-        
-        <label for="cognome">Cognome:</label>
-        <input type="text" id="cognome" placeholder="Inserisci il cognome">
-        
-        <label for="indirizzo">Indirizzo:</label>
-        <input type="text" id="indirizzo" placeholder="Inserisci l'indirizzo">
-        
-        <label for="citta">Città:</label>
-        <input type="text" id="citta" placeholder="Inserisci la città">
-        
-        <label for="email">Email:</label>
-        <input type="email" id="email" placeholder="Inserisci l'email">
-        
-        <label for="cf">Codice Fiscale:</label>
-        <input type="text" id="cf" placeholder="Inserisci il codice fiscale">
-        
-        <button onclick="inserisciDati()">OK</button>
-    </div>
+    <!-- Form per inserire i dati -->
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" placeholder="Nome"><br><br>
 
-  
-    <div class="matrice-container">
-        <h2>Dati Inseriti:</h2>
-        <table id="matrice">
-            <thead>
-                <tr>
-                    <th>Nome</th>
-                    <th>Cognome</th>
-                    <th>Indirizzo</th>
-                    <th>Città</th>
-                    <th>Email</th>
-                    <th>Codice Fiscale</th>
-                </tr>
-            </thead>
-            <body2>
-          
-            </body2>
-        </table>
-    </div>
+    <label for="cognome">Cognome:</label>
+    <input type="text" id="cognome" placeholder="Cognome"><br><br>
+
+    <label for="indirizzo">Indirizzo:</label>
+    <input type="text" id="indirizzo" placeholder="Indirizzo"><br><br>
+
+    <label for="citta">Città:</label>
+    <input type="text" id="citta" placeholder="Città"><br><br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" placeholder="Email"><br><br>
+
+    <label for="codiceFiscale">Codice Fiscale:</label>
+    <input type="text" id="codiceFiscale" placeholder="Codice Fiscale"><br><br>
+
+    <!-- Bottone per aggiungere i dati alla matrice -->
+    <button onclick="aggiungiDati()">OK</button>
+
+    <!-- Tabella per visualizzare i dati -->
+    <h2>Dati Inseriti:</h2>
+    <table id="tabellaDati">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Cognome</th>
+                <th>Indirizzo</th>
+                <th>Città</th>
+                <th>Email</th>
+                <th>Codice Fiscale</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Le righe della tabella si aggiungeranno qui -->
+        </tbody>
+    </table>
 
     <script>
-      
+        // Matrice che conterrà i dati
         let matrice = [];
 
-   
-        function inserisciDati() {
-          
-            const nome = document.getElementById("nome").value;
-            const cognome = document.getElementById("cognome").value;
-            const indirizzo = document.getElementById("indirizzo").value;
-            const citta = document.getElementById("citta").value;
-            const email = document.getElementById("email").value;
-            const cf = document.getElementById("cf").value;
+        // Funzione per aggiungere i dati alla matrice e alla tabella
+        function aggiungiDati() {
+            // Recupero i valori dai campi di input
+            let nome = document.getElementById("nome").value;
+            let cognome = document.getElementById("cognome").value;
+            let indirizzo = document.getElementById("indirizzo").value;
+            let citta = document.getElementById("citta").value;
+            let email = document.getElementById("email").value;
+            let codiceFiscale = document.getElementById("codiceFiscale").value;
 
-         
-            if (nome && cognome && indirizzo && citta && email && cf) {
-           
-                matrice.push([nome, cognome, indirizzo, citta, email, cf]);
+            // Controllo se tutti i campi sono stati compilati
+            if (nome && cognome && indirizzo && citta && email && codiceFiscale) {
+                // Aggiungi i dati alla matrice
+                matrice.push([nome, cognome, indirizzo, citta, email, codiceFiscale]);
 
-             
-                aggiornaTabella();
+                // Aggiungi una nuova riga alla tabella
+                let tabella = document.getElementById("tabellaDati").getElementsByTagName('tbody')[0];
+                let nuovaRiga = tabella.insertRow();
 
+                // Aggiungi i dati alla riga della tabella
+                for (let i = 0; i < matrice[matrice.length - 1].length; i++) {
+                    let cella = nuovaRiga.insertCell();
+                    cella.textContent = matrice[matrice.length - 1][i];
+                }
+
+                // Pulisce i campi di input
                 document.getElementById("nome").value = '';
                 document.getElementById("cognome").value = '';
                 document.getElementById("indirizzo").value = '';
                 document.getElementById("citta").value = '';
                 document.getElementById("email").value = '';
-                document.getElementById("cf").value = '';
+                document.getElementById("codiceFiscale").value = '';
             } else {
-                alert("Non hai inserito i campi chiesti.");
+                // Mostra un avviso se non sono tutti compilati
+                alert("Tutti i campi devono essere compilati!");
             }
-        }
-
-        function aggiornaTabella() {
-            const tableBody = document.getElementById("matrice").getElementsByTagName("body2")[0];
-            tableBody.innerHTML = '';
-            matrice.forEach((riga) => {
-                const newRow = tableBody.insertRow();
-                riga.forEach((cellData) => {
-                    const newCell = newRow.insertCell();
-                    newCell.textContent = cellData;
-                });
-            });
         }
     </script>
 
