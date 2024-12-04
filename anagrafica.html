@@ -43,7 +43,7 @@
 
     <h1>Inserisci Dati Anagrafici</h1>
 
-    <!-- Form per inserire i dati -->
+   
     <label for="nome">Nome:</label>
     <input type="text" id="nome" placeholder="Nome"><br><br>
 
@@ -62,10 +62,10 @@
     <label for="codiceFiscale">Codice Fiscale:</label>
     <input type="text" id="codiceFiscale" placeholder="Codice Fiscale"><br><br>
 
-    <!-- Bottone per aggiungere i dati alla matrice -->
+    
     <button onclick="aggiungiDati()">OK</button>
 
-    <!-- Tabella per visualizzare i dati -->
+   
     <h2>Dati Inseriti:</h2>
     <table id="tabellaDati">
         <thead>
@@ -79,17 +79,17 @@
             </tr>
         </thead>
         <tbody>
-            <!-- Le righe della tabella si aggiungeranno qui -->
+          
         </tbody>
     </table>
 
     <script>
-        // Matrice che conterrà i dati
+        
         let matrice = [];
 
-        // Funzione per aggiungere i dati alla matrice e alla tabella
+       
         function aggiungiDati() {
-            // Recupero i valori dai campi di input
+            
             let nome = document.getElementById("nome").value;
             let cognome = document.getElementById("cognome").value;
             let indirizzo = document.getElementById("indirizzo").value;
@@ -97,22 +97,22 @@
             let email = document.getElementById("email").value;
             let codiceFiscale = document.getElementById("codiceFiscale").value;
 
-            // Controllo se tutti i campi sono stati compilati
+            
             if (nome && cognome && indirizzo && citta && email && codiceFiscale) {
-                // Aggiungi i dati alla matrice
+                
                 matrice.push([nome, cognome, indirizzo, citta, email, codiceFiscale]);
 
-                // Aggiungi una nuova riga alla tabella
+               
                 let tabella = document.getElementById("tabellaDati").getElementsByTagName('tbody')[0];
                 let nuovaRiga = tabella.insertRow();
 
-                // Aggiungi i dati alla riga della tabella
+               
                 for (let i = 0; i < matrice[matrice.length - 1].length; i++) {
                     let cella = nuovaRiga.insertCell();
                     cella.textContent = matrice[matrice.length - 1][i];
                 }
 
-                // Pulisce i campi di input
+               
                 document.getElementById("nome").value = '';
                 document.getElementById("cognome").value = '';
                 document.getElementById("indirizzo").value = '';
@@ -120,7 +120,7 @@
                 document.getElementById("email").value = '';
                 document.getElementById("codiceFiscale").value = '';
             } else {
-                // Mostra un avviso se non sono tutti compilati
+               
                 alert("Tutti i campi devono essere compilati!");
             }
         }
