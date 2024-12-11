@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="rondo.jpg">
+    <title>Anagrafica 1.0</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #b1ebe8;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        input {
+            margin-bottom: 10px;
+            padding: 8px;
+            width: 200px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+      
+        
+    </style>
+</head>
+<body>
+
+    <h1>Inserisci Dati Anagrafici</h1>
+
+   
+    <label for="nome">Nome:</label>
+    <input type="text" id="nome" placeholder="Nome"><br><br>
+
+    <label for="cognome">Cognome:</label>
+    <input type="text" id="cognome" placeholder="Cognome"><br><br>
+
+    <label for="indirizzo">Indirizzo:</label>
+    <input type="text" id="indirizzo" placeholder="Indirizzo"><br><br>
+
+    <label for="citta">Città:</label>
+    <input type="text" id="citta" placeholder="Città"><br><br>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" placeholder="Email"><br><br>
+
+    <label for="codiceFiscale">Codice Fiscale:</label>
+    <input type="text" id="codiceFiscale" placeholder="Codice Fiscale"><br><br>
+
+    
+    <button onclick="aggiungiDati()">OK</button>
+
+   
+    <h2>Dati Inseriti:</h2>
+    <table id="tabellaDati">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Cognome</th>
+                <th>Indirizzo</th>
+                <th>Città</th>
+                <th>Email</th>
+                <th>Codice Fiscale</th>
+            </tr>
+        </thead>
+        <tbody>
+          
+        </tbody>
+    </table>
+
+<script>
+   
+    function validaInput() {
+      
+        let nome = document.getElementById("nome").value;
+        let cognome = document.getElementById("cognome").value;
+        let indirizzo = document.getElementById("indirizzo").value;
+        let citta = document.getElementById("citta").value;
+        let email = document.getElementById("email").value;
+        let codiceFiscale = document.getElementById("codiceFiscale").value;
+
+       
+        const regexNome = /^[a-zA-Z\s]+$/; // Solo lettere e spazi
+        const regexCognome = /^[a-zA-Z\s]+$/;
+        const regexIndirizzo = /^[a-zA-Z0-9\s,.'-]{3,}$/; // Testo generico con numeri
+        const regexCitta = /^[a-zA-Z\s]+$/;
+        const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Formato email
+        const regexCodiceFiscale = /^[A-Z0-9]{16}$/; // Codice fiscale italiano
+
+       
+        if (!regexNome.test(nome)) {
+            alert("Nome non valido! Usa solo lettere.");
+            return false;
+        }
+        if (!regexCognome.test(cognome)) {
+            alert("Cognome non valido! Usa solo lettere.");
+            return false;
+        }
+        if (!regexIndirizzo.test(indirizzo)) {
+            alert("Indirizzo non valido! Deve essere almeno 3 caratteri.");
+            return false;
+        }
+        if (!regexCitta.test(citta)) {
+            alert("Città non valida! Usa solo lettere.");
+            return false;
+        }
+        if (!regexEmail.test(email)) {
+            alert("Email non valida! Controlla il formato.");
+            return false;
+        }
+        if (!regexCodiceFiscale.test(codiceFiscale)) {
+            alert("Codice Fiscale non valido! Deve essere lungo 16 caratteri alfanumerici.");
+            return false;
+        }
+
+       
+        return true;
+    }
+
+   
+    function aggiungiDati() {
+        
+        if (validaInput()) {
+            let nome = document.getElementById("nome").value;
+            let cognome = document.getElementById("cognome").value;
+            let indirizzo = document.getElementById("indirizzo").value;
+            let citta = document.getElementById("citta").value;
+            let email = document.getElementById("email").value;
+            let codiceFiscale = document.getElementById("codiceFiscale").value;
+
+            matrice.push([nome, cognome, indirizzo, citta, email, codiceFiscale]);
+
+            let tabella = document.getElementById("tabellaDati").getElementsByTagName('tbody')[0];
+            let nuovaRiga = tabella.insertRow();
+
+            for (let i = 0; i < matrice[matrice.length - 1].length; i++) {
+                let cella = nuovaRiga.insertCell();
+                cella.textContent = matrice[matrice.length - 1][i];
+            }
+
+            document.getElementById("nome").value = '';
+            document.getElementById("cognome").value = '';
+            document.getElementById("indirizzo").value = '';
+            document.getElementById("citta").value = '';
+            document.getElementById("email").value = '';
+            document.getElementById("codiceFiscale").value = '';
+        }
+    }
+</script>
+</body>
+</html>
