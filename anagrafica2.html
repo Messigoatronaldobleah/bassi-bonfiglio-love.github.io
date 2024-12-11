@@ -96,12 +96,12 @@
         let codiceFiscale = document.getElementById("codiceFiscale").value;
 
        
-        const regexNome = /^[a-zA-Z\s]+$/; 
-        const regexCognome = /^[a-zA-Z\s]+$/;
-        const regexIndirizzo = /^[a-zA-Z0-9\s,.'-]{3,}$/; 
-        const regexCitta = /^[a-zA-Z\s]+$/;
-        const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
-        const regexCodiceFiscale = /^[A-Z0-9]{16}$/; 
+        const regexNome = /^[a-zA-Z\s]/; 
+        const regexCognome = /^[a-zA-Z\s]/;
+        const regexIndirizzo = /^[a-zA-Z0-9\s,.'-]{3,}/; 
+        const regexCitta = /^[a-zA-Z\s]/;
+        const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]/; 
+        const regexCodiceFiscale = /^[A-Z0-9]{16}/; 
 
        
         if (!regexNome.test(nome)) {
