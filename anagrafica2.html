@@ -101,7 +101,7 @@
         const regexIndirizzo = /^[a-zA-Z0-9\s,.'-]{3,}/; 
         const regexCitta = /^[a-zA-Z\s]/;
         const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]/; 
-        const regexCodiceFiscale = /^[A-Z0-9]{16}/; 
+       
 
        
         if (!regexNome.test(nome)) {
@@ -124,10 +124,7 @@
             alert("Email non valida! Controlla il formato.");
             return false;
         }
-        if (!regexCodiceFiscale.test(codiceFiscale)) {
-            alert("Codice Fiscale non valido! Deve essere lungo 16 caratteri alfanumerici.");
-            return false;
-        }
+      
 
        
         return true;
