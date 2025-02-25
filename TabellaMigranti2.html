@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grafico Migranti con Canvas</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: center;
+        }
+
+        #canvas-container {
+            margin-top: 20px;
+        }
+
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h1><center>Tabella Migranti e Grafico (Canvas)</center></h1>
+    <input type="file" id="file-input" onchange="apri(this)"/>
+    <div id="container"></div>
+    <div id="canvas-container">
+        <canvas id="myCanvas" width="500" height="300"></canvas>
+    </div>
+
+    <script>
+        var creato = false;
+
+        // Funzione per caricare il file CSV
+        function apri(input) {
+            if (!creato) {
+                let file = input.files[0];
+                let reader = new FileReader();
+                reader.readAsText(file);
+                let matrice = [];
+
+                reader.onload = function() {
+                    let contenuto = reader.result;
+                    let righe = contenuto.split("\n");
+                    for (let i = 0; i < righe.length; i++) {
+                        matrice[i] = righe[i].split(",");
+                    }
+                    let container = document.getElementById("container");
+                    let tabella = document.createElement("table");
+                    tabella.className = "table";
+
+                    for (let riga = 0; riga < matrice.length; riga++) {
+                        let rigaTabella = document.createElement("tr");
+                        for (let colonna = 0; colonna < matrice[0].length; colonna++) {
+                            let cella;
+                            if (riga == 0) {
+                                cella = document.createElement("th");
+                            } else {
+                                cella = document.createElement("td");
+                            }
+                            let dato = matrice[riga][colonna].substring(1, matrice[riga][colonna].length - 1);
+                            cella.innerText = dato;
+                            rigaTabella.append(cella);
+                        }
+                        tabella.append(rigaTabella);
+                    }
+                    container.append(tabella);
+
+                    // Dopo aver creato la tabella, crea anche il grafico
+                    creaGrafico(matrice);
+                };
+
+                creato = true;
+            } else {
+                let tabella = document.querySelector("table.table");
+                tabella.remove();
+                creato = false;
+                apri(input);
+            }
+        }
+
+        // Funzione per creare il grafico
+        function creaGrafico(dati) {
+            // Estrai le etichette (prima colonna) e i valori (seconda colonna)
+            let etichette = [];
+            let valori = [];
+
+            for (let i = 1; i < dati.length; i++) {  // Partiamo da 1 per saltare la riga di intestazione
+                etichette.push(dati[i][0]);  // Etichetta dalla prima colonna
+                valori.push(parseFloat(dati[i][1]));  // Dati numerici dalla seconda colonna
+            }
+
+            // Ottieni il contesto del canvas
+            var canvas = document.getElementById('myCanvas');
+            var ctx = canvas.getContext('2d');
+
+            // Pulisci il canvas prima di disegnare
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Imposta le dimensioni e colori
+            const larghezzaBarra = 40;
+            const spazio = 50;
+            const inizioX = 50;
+            const inizioY = canvas.height - 50;
+            const altezzaMassimaBarra = 200;
+
+            // Disegna l'asse X
+            ctx.beginPath();
+            ctx.moveTo(inizioX, inizioY);
+            ctx.lineTo(canvas.width - 20, inizioY);
+            ctx.stroke();
+
+            // Disegna l'asse Y
+            ctx.beginPath();
+            ctx.moveTo(inizioX, inizioY);
+            ctx.lineTo(inizioX, 20);
+            ctx.stroke();
+
+            // Disegna le etichette e le barre
+            for (let i = 0; i < etichette.length; i++) {
+                // Calcola la posizione della barra
+                let altezzaBarra = (valori[i] / Math.max(...valori)) * altezzaMassimaBarra;
+
+                // Disegna la barra
+                ctx.fillStyle = 'rgba(54, 162, 235, 0.6)';
+                ctx.fillRect(inizioX + i * (larghezzaBarra + spazio), inizioY - altezzaBarra, larghezzaBarra, altezzaBarra);
+
+                // Disegna le etichette sotto le barre
+                ctx.fillStyle = 'black';
+                ctx.fillText(etichette[i], inizioX + i * (larghezzaBarra + spazio) + larghezzaBarra / 4, inizioY + 15);
+            }
+        }
+    </script>
+</body>
+</html>
