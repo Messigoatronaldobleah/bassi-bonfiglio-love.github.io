@@ -35,104 +35,95 @@
     <div id="canvas-container">
         <canvas id="myCanvas" width="500" height="300"></canvas>
     </div>
-
-    <script>
-        var creato = false;
-        function apri(input) {
-            if (!creato) {
-                let file = input.files[0];
-                let reader = new FileReader();
-                reader.readAsText(file);
-                let matrice = [];
-
-                reader.onload = function() {
-                    let contenuto = reader.result;
-                    let righe = contenuto.split("\n");
-                    for (let i = 0; i < righe.length; i++) {
-                        matrice[i] = righe[i].split(",");
-                    }
-                    let container = document.getElementById("container");
-                    let tabella = document.createElement("table");
-                    tabella.className = "table";
-
-                    for (let riga = 0; riga < matrice.length; riga++) {
-                        let rigaTabella = document.createElement("tr");
-                        for (let colonna = 0; colonna < matrice[0].length; colonna++) {
-                            let cella;
-                            if (riga == 0) {
-                                cella = document.createElement("th");
-                            } else {
-                                cella = document.createElement("td");
-                            }
-                            let dato = matrice[riga][colonna].substring(1, matrice[riga][colonna].length - 1);
-                            cella.innerText = dato;
-                            rigaTabella.append(cella);
-                        }
-                        tabella.append(rigaTabella);
-                    }
-                    container.append(tabella);
-                    creaGrafico(matrice);
-                };
-
-                creato = true;
-            } else {
-                let tabella = document.querySelector("table.table");
-                tabella.remove();
-                creato = false;
-                apri(input);
-            }
-        }
-
-       
-        function creaGrafico(dati) {
-         
-            let anni = [];
-            let valori = [];
-
-            for (let i = 1; i < dati.length; i++) {  // Partiamo da 1 per saltare la riga di intestazione
-                anni.push(dati[i][0]);  // Etichetta dalla prima colonna
-                valori.push(parseFloat(dati[i][1]));  // Dati numerici dalla seconda colonna
-            }
-
-            var canvas = document.getElementById('myCanvas');
-            var ctx = canvas.getContext('2d');
-
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-           
-            const larghezzaBarra = 40;
-            const spazio = 50;
-            const inizioX = 50;
-
-            const inizioY = canvas.height - 50;
-            const altezzaMassimaBarra = 200;
-
-            
-            ctx.beginPath();
-            ctx.moveTo(inizioX, inizioY);
-            ctx.lineTo(canvas.width - 20, inizioY);
-            ctx.stroke();
-
-            
-            ctx.beginPath();
-            ctx.moveTo(inizioX, inizioY);
-            ctx.lineTo(inizioX, 20);
-            ctx.stroke();
-
-           
-            for (let i = 0; i < anni.length; i++) {
     
-                let altezzaBarra = (valori[i] / Math.max(...valori)) * altezzaMassimaBarra;
-
-                
-                ctx.fillStyle = 'rgba(54, 162, 235, 0.6)';
-                ctx.fillRect(inizioX + i * (larghezzaBarra + spazio), inizioY - altezzaBarra, larghezzaBarra, altezzaBarra);
-
-               
-                ctx.fillStyle = 'black';
-                ctx.fillText(anni[i], inizioX + i * (larghezzaBarra + spazio) + larghezzaBarra / 4, inizioY + 15);
+<script>
+    var created=false;
+function apri(input){
+  if(!created){
+    created=true;
+    let file = input.files[0];
+    let reader = new FileReader();
+    reader.readAsText(file);
+    let m=[];
+    reader.onload = function(){
+      let content=reader.result;
+      let v=content.split("\n");
+      for(let i=0;i<v.length;i++){
+      m[i]=v[i].split(",");
+      }
+      let container=document.getElementById("container");
+      let table=document.createElement("table");
+      table.className="table";
+      for(let r=0;r<m.length;r++){
+        let tableRow=document.createElement("tr");
+        for(let c=0;c<m[0].length;c++){
+          if(r==0){
+            tableCol=document.createElement("th");
+            if(c==0)
+              tableCol.className="top-left";
+            else if(c==m[0].length-1)
+              tableCol.className="top-right";
+          }else{
+            tableCol=document.createElement("td");
+            if(r==m.length-1)
+              if(c==0)
+                tableCol.className="bottom-left";
+              else if(c==m[0].length-1)
+                tableCol.className="bottom-right";
             }
+            let data=m[r][c].substring(1,m[r][c].length-1);
+            tableCol.innerText=data;
+            tableRow.append(tableCol);
+          }
+          table.append(tableRow);
         }
-    </script>
-</body>
-</html>
+        container.append(table);
+        let h1=document.createElement("h1");
+        h1.innerText="Grafico";
+        container.append(h1);
+      const xValues = [];
+      const yValues = [];
+      for(let i=1;i<m.length;i++){
+          xValues[i-1]=parseInt(m[i][0].substring(1,m[i][0].length-1));
+          yValues[i-1]=parseInt(m[i][1].substring(1,m[i][1].length-1));
+      }
+      var width=800, height=300;
+      var kw=width/(max(xValues)-min(xValues)), kh=height/(max(yValues)-0);
+      const canvas = document.getElementById("myCanvas");
+      const ctx = canvas.getContext("2d");
+      ctx.beginPath();
+      for(let i=0;i<xValues.length;i++){
+      ctx.lineTo(Math.round((xValues[i]-xValues[0])*kw), Math.round(height-((yValues[i])*kh)));
+      console.log(xValues[i]+" , "+yValues[i]);
+      console.log(Math.round((xValues[i]-xValues[0])*kw)+" , "+Math.round((height-((yValues[i])*kh))));
+      }
+      ctx.lineWidth = 3;
+      ctx.strokeStyle = "blue";
+      ctx.lineCap = "round";
+      ctx.stroke();
+    }
+  }else{
+    let table=document.querySelector("table.table");
+    table.remove();
+    created=false;
+    apri(input);
+  }
+}
+function max(v){
+  let max=v[0];
+  for(let i=0;i<v.length;i++){
+    if(v[i]>max)
+      max=v[i];
+  }
+  return max;
+}
+function min(v){
+  let min=v[0];
+  for(let i=0;i<v.length;i++){
+    if(v[i]<min)
+      min=v[i];
+  }
+  return min;
+}
+   
+
