@@ -38,8 +38,6 @@
 
     <script>
         var creato = false;
-
-        // Funzione per caricare il file CSV
         function apri(input) {
             if (!creato) {
                 let file = input.files[0];
@@ -73,8 +71,6 @@
                         tabella.append(rigaTabella);
                     }
                     container.append(tabella);
-
-                    // Dopo aver creato la tabella, crea anche il grafico
                     creaGrafico(matrice);
                 };
 
@@ -87,55 +83,54 @@
             }
         }
 
-        // Funzione per creare il grafico
+       
         function creaGrafico(dati) {
-            // Estrai le etichette (prima colonna) e i valori (seconda colonna)
-            let etichette = [];
+         
+            let anni = [];
             let valori = [];
 
             for (let i = 1; i < dati.length; i++) {  // Partiamo da 1 per saltare la riga di intestazione
-                etichette.push(dati[i][0]);  // Etichetta dalla prima colonna
+                anni.push(dati[i][0]);  // Etichetta dalla prima colonna
                 valori.push(parseFloat(dati[i][1]));  // Dati numerici dalla seconda colonna
             }
 
-            // Ottieni il contesto del canvas
             var canvas = document.getElementById('myCanvas');
             var ctx = canvas.getContext('2d');
 
-            // Pulisci il canvas prima di disegnare
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            // Imposta le dimensioni e colori
+           
             const larghezzaBarra = 40;
             const spazio = 50;
             const inizioX = 50;
+
             const inizioY = canvas.height - 50;
             const altezzaMassimaBarra = 200;
 
-            // Disegna l'asse X
+            
             ctx.beginPath();
             ctx.moveTo(inizioX, inizioY);
             ctx.lineTo(canvas.width - 20, inizioY);
             ctx.stroke();
 
-            // Disegna l'asse Y
+            
             ctx.beginPath();
             ctx.moveTo(inizioX, inizioY);
             ctx.lineTo(inizioX, 20);
             ctx.stroke();
 
-            // Disegna le etichette e le barre
-            for (let i = 0; i < etichette.length; i++) {
-                // Calcola la posizione della barra
+           
+            for (let i = 0; i < anni.length; i++) {
+    
                 let altezzaBarra = (valori[i] / Math.max(...valori)) * altezzaMassimaBarra;
 
-                // Disegna la barra
+                
                 ctx.fillStyle = 'rgba(54, 162, 235, 0.6)';
                 ctx.fillRect(inizioX + i * (larghezzaBarra + spazio), inizioY - altezzaBarra, larghezzaBarra, altezzaBarra);
 
-                // Disegna le etichette sotto le barre
+               
                 ctx.fillStyle = 'black';
-                ctx.fillText(etichette[i], inizioX + i * (larghezzaBarra + spazio) + larghezzaBarra / 4, inizioY + 15);
+                ctx.fillText(anni[i], inizioX + i * (larghezzaBarra + spazio) + larghezzaBarra / 4, inizioY + 15);
             }
         }
     </script>
