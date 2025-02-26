@@ -92,30 +92,20 @@ function apri(input) {
         ctx.fillText(yValues[i], 20, yPos);  // etichetta asse Y
       }
 
-      // Disegna i punti del grafico
-      ctx.beginPath();
-      for (let i = 0; i < xValues.length; i++) {
-        const xPos = 50 + (xValues[i] - xValues[0]) * kw;
-        const yPos = height - 50 - (yValues[i]) * kh;
-        ctx.arc(xPos, yPos, 5, 0, Math.PI * 2); // disegna i punti
-        ctx.fillStyle = "blue";
-        ctx.fill();
-      }
-      ctx.closePath();
-
-      // Collega i punti con una linea
+      // Disegna la linea tra i punti (senza riempire l'area)
       ctx.beginPath();
       for (let i = 0; i < xValues.length; i++) {
         const xPos = 50 + (xValues[i] - xValues[0]) * kw;
         const yPos = height - 50 - (yValues[i]) * kh;
         if (i === 0) {
-          ctx.moveTo(xPos, yPos);
+          ctx.moveTo(xPos, yPos);  // inizia il tracciamento
         } else {
-          ctx.lineTo(xPos, yPos);
+          ctx.lineTo(xPos, yPos);  // collega i punti con una linea
         }
       }
       ctx.lineWidth = 2;
       ctx.strokeStyle = "blue";
+      ctx.lineCap = "round";
       ctx.stroke();
     };
   } else {
