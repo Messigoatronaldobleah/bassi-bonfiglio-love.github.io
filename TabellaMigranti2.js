@@ -14,7 +14,7 @@ function apri(input) {
         m[i] = v[i].split(",");
       }
 
-      // Creazione della tabella
+      
       let container = document.getElementById("container");
       let table = document.createElement("table");
       table.className = "table";
@@ -44,12 +44,12 @@ function apri(input) {
       }
       container.append(table);
 
-      // Aggiunta del titolo
+ 
       let h1 = document.createElement("h1");
       h1.innerText = "Grafico";
       container.append(h1);
 
-      // Prepara i dati per il grafico
+      
       const xValues = [];
       const yValues = [];
       for (let i = 1; i < m.length; i++) {
@@ -57,50 +57,49 @@ function apri(input) {
         yValues[i - 1] = parseInt(m[i][1].substring(1, m[i][1].length - 1));
       }
 
-      // Definizione delle dimensioni del grafico
-      var width = 800, height = 300;
+      
+      var width = 1000, height = 500;
       var kw = width / (max(xValues) - min(xValues)), kh = height / (max(yValues) - 0);
 
-      // Ottieni il contesto del canvas
+     
       const canvas = document.getElementById("myCanvas");
       const ctx = canvas.getContext("2d");
 
-      // Disegna gli assi
+      
       ctx.beginPath();
-      ctx.moveTo(50, height - 50); // punto di partenza (origine)
-      ctx.lineTo(width - 50, height - 50); // asse X
-      ctx.lineTo(50, height - 50); // asse Y
+      ctx.moveTo(50, height - 50); 
+      ctx.lineTo(width - 50, height - 50); 
+      ctx.lineTo(50, height - 50); 
       ctx.strokeStyle = "black";
       ctx.lineWidth = 2;
       ctx.stroke();
 
-      // Disegna le etichette sugli assi
-      ctx.fillText("X", width - 30, height - 30);  // Etichetta X
-      ctx.fillText("Y", 10, 30);  // Etichetta Y
+      
+      ctx.fillText("X", width - 30, height - 30); 
+      ctx.fillText("Y", 10, 30);  
 
-      // Aggiungi i valori dell'asse X
-      const stepX = Math.round(width / (xValues.length + 1));  // passo per l'asse X
+     
+      const stepX = Math.round(width / (xValues.length + 1));
       for (let i = 0; i < xValues.length; i++) {
         const xPos = 50 + (i * stepX);
-        ctx.fillText(xValues[i], xPos, height - 30);  // etichetta asse X
+        ctx.fillText(xValues[i], xPos, height - 30);
       }
 
-      // Aggiungi i valori dell'asse Y
-      const stepY = Math.round(height / (yValues.length + 1)); // passo per l'asse Y
+      
+      const stepY = Math.round(height / (yValues.length + 1)); 
       for (let i = 0; i < yValues.length; i++) {
         const yPos = height - 50 - (i * stepY);
-        ctx.fillText(yValues[i], 20, yPos);  // etichetta asse Y
+        ctx.fillText(yValues[i], 20, yPos);  
       }
 
-      // Disegna la linea tra i punti (senza riempire l'area)
       ctx.beginPath();
       for (let i = 0; i < xValues.length; i++) {
         const xPos = 50 + (xValues[i] - xValues[0]) * kw;
         const yPos = height - 50 - (yValues[i]) * kh;
         if (i === 0) {
-          ctx.moveTo(xPos, yPos);  // inizia il tracciamento
+          ctx.moveTo(xPos, yPos);
         } else {
-          ctx.lineTo(xPos, yPos);  // collega i punti con una linea
+          ctx.lineTo(xPos, yPos); 
         }
       }
       ctx.lineWidth = 2;
