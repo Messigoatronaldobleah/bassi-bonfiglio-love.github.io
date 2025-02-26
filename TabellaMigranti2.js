@@ -58,7 +58,7 @@ function apri(input) {
       }
 
       
-      var width = 700, height = 200;
+      var width = 800, height = 300;
       var kw = width / (max(xValues) - min(xValues)), kh = height / (max(yValues) - 0);
 
      
