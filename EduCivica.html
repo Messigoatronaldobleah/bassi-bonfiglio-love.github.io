@@ -1,0 +1,118 @@
+DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Educazione Stradale</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        main {
+            padding: 20px;
+        }
+        img {
+            max-width: 100px;
+        }
+        .segnale {
+            display: inline-block;
+            margin: 20px;
+        }
+        button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: lightgray;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Educazione Stradale</h1>
+        <nav>
+            <ul>
+                <li><a onclick="showSection('home')">Home</a></li>
+                <li><a onclick="showSection('segnali')">Segnali Stradali</a></li>
+                <li><a onclick="showSection('quiz')">Quiz</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Sezione Home -->
+        <section id="home">
+            <h2>Benvenuto nel sito sull'educazione stradale</h2>
+            <p>Qui puoi imparare le regole della strada e testare le tue conoscenze.</p>
+            <img src="https://via.placeholder.com/600x300" alt="Strada Sicura">
+        </section>
+
+        <!-- Sezione Segnali Stradali -->
+        <section id="segnali" class="hidden">
+            <h2>Tipi di Segnali Stradali</h2>
+            <div class="segnale">
+                <img src="https://via.placeholder.com/100" alt="Segnale Stop">
+                <p><strong>Stop:</strong> Fermarsi obbligatoriamente.</p>
+            </div>
+            <div class="segnale">
+                <img src="https://via.placeholder.com/100" alt="Segnale Precedenza">
+                <p><strong>Precedenza:</strong> Dare la precedenza ad altri veicoli.</p>
+            </div>
+        </section>
+
+        <!-- Sezione Quiz -->
+        <section id="quiz" class="hidden">
+            <h2>Testa le tue conoscenze</h2>
+            <div id="quiz-content">
+                <p>1. Cosa significa un segnale di Stop?</p>
+                <button onclick="checkAnswer(this, true)">Fermarsi completamente</button>
+                <button onclick="checkAnswer(this, false)">Rallentare</button>
+                <button onclick="checkAnswer(this, false)">Accelerare</button>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        function showSection(sectionId) {
+            document.querySelectorAll("section").forEach(section => {
+                section.classList.add("hidden");
+            });
+            document.getElementById(sectionId).classList.remove("hidden");
+        }
+
+        function checkAnswer(button, isCorrect) {
+            if (isCorrect) {
+                alert("Corretto! Hai risposto bene.");
+            } else {
+                alert("Sbagliato! Riprova.");
+            }
+        }
+    </script>
+</body>
+</html>
