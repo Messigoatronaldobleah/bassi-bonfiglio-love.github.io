@@ -1,118 +1,236 @@
-DOCTYPE html>
+<!DOCTYPE html>
 <html lang="it">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Educazione Stradale</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        /* Resetting some default styles */
+        * {
             margin: 0;
             padding: 0;
-            text-align: center;
+            box-sizing: border-box;
         }
+        
+        /* Body and general styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f1f1f1;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header style */
         header {
+            background: #007acc;
+            color: #fff;
+            text-align: center;
+            padding: 40px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 3.5em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2em;
+            font-weight: 300;
+        }
+
+        /* Navigation styles */
+        nav {
             background-color: #333;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        nav a {
             color: white;
-            padding: 10px 0;
-        }
-        nav ul {
-            list-style: none;
-            padding: 0;
-        }
-        nav ul li {
-            display: inline;
-            margin: 0 15px;
-        }
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-            cursor: pointer;
-        }
-        main {
-            padding: 20px;
-        }
-        img {
-            max-width: 100px;
-        }
-        .segnale {
+            padding: 15px 25px;
             display: inline-block;
-            margin: 20px;
+            text-decoration: none;
+            font-size: 1.1em;
+            transition: background-color 0.3s;
         }
-        button {
-            margin: 10px;
-            padding: 10px;
-            font-size: 16px;
-            cursor: pointer;
+
+        nav a:hover {
+            background-color: #555;
         }
-        button:hover {
-            background-color: lightgray;
+
+        nav a.active {
+            background-color: #007acc;
         }
-        .hidden {
-            display: none;
+
+        /* Section styles */
+        section {
+            padding: 50px 20px;
+            margin: 20px 0;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
+
+        section h2 {
+            font-size: 2.5em;
+            color: #007acc;
+            margin-bottom: 20px;
+        }
+
+        section p {
+            font-size: 1.1em;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .grid-container div {
+            background-color: #f9f9f9;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .grid-container div:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .grid-container h3 {
+            font-size: 1.6em;
+            color: #007acc;
+            margin-bottom: 10px;
+        }
+
+        /* Footer style */
+        footer {
+            text-align: center;
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            font-size: 1.1em;
+        }
+
+        footer p {
+            margin: 10px 0;
+        }
+
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5em;
+            }
+            nav a {
+                font-size: 1em;
+                padding: 12px 20px;
+            }
+            .grid-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 2em;
+            }
+            nav a {
+                font-size: 0.9em;
+                padding: 10px 15px;
+            }
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
     </style>
 </head>
 <body>
+
     <header>
         <h1>Educazione Stradale</h1>
-        <nav>
-            <ul>
-                <li><a onclick="showSection('home')">Home</a></li>
-                <li><a onclick="showSection('segnali')">Segnali Stradali</a></li>
-                <li><a onclick="showSection('quiz')">Quiz</a></li>
-            </ul>
-        </nav>
+        <p>Impara le regole per una guida sicura e responsabile</p>
     </header>
 
-    <main>
-        <!-- Sezione Home -->
-        <section id="home">
-            <h2>Benvenuto nel sito sull'educazione stradale</h2>
-            <p>Qui puoi imparare le regole della strada e testare le tue conoscenze.</p>
-            <img src="SicuerzzaStradale.png" alt="Strada Sicura">
-        </section>
+    <nav>
+        <a href="#regole" class="active">Regole del Codice della Strada</a>
+        <a href="#segnali">Segnali Stradali</a>
+        <a href="#sicurezza">Sicurezza Stradale</a>
+    </nav>
 
-        <!-- Sezione Segnali Stradali -->
-        <section id="segnali" class="hidden">
-            <h2>Tipi di Segnali Stradali</h2>
-            <div class="segnale">
-                <img src="https://via.placeholder.com/100" alt="Segnale Stop">
-                <p><strong>Stop:</strong> Fermarsi obbligatoriamente.</p>
+    <section id="regole">
+        <div class="container">
+            <h2>Le Regole del Codice della Strada</h2>
+            <p>Il Codice della Strada è un insieme di leggi e regolamenti che governano il comportamento degli utenti della strada, con l'obiettivo di garantire la sicurezza e l'ordine sulla rete stradale. È fondamentale conoscere e rispettare queste regole per prevenire incidenti e promuovere una circolazione fluida.</p>
+            <div class="grid-container">
+                <div>
+                    <h3>Velocità</h3>
+                    <p>Ogni strada ha un limite di velocità che deve essere rispettato. La velocità varia in base alla tipologia di strada (urbana, extraurbana, autostrada) e alla segnaletica.</p>
+                </div>
+                <div>
+                    <h3>Incroci</h3>
+                    <p>Gli incroci sono punti delicati in cui bisogna prestare attenzione alla segnaletica e agli altri veicoli per evitare collisioni.</p>
+                </div>
+                <div>
+                    <h3>Uso del cellulare</h3>
+                    <p>Utilizzare il cellulare mentre si guida è pericoloso e vietato. È fondamentale rimanere concentrati sulla strada in ogni momento.</p>
+                </div>
             </div>
-            <div class="segnale">
-                <img src="https://via.placeholder.com/100" alt="Segnale Precedenza">
-                <p><strong>Precedenza:</strong> Dare la precedenza ad altri veicoli.</p>
+        </div>
+    </section>
+
+    <section id="segnali">
+        <div class="container">
+            <h2>I Segnali Stradali</h2>
+            <p>I segnali stradali sono strumenti fondamentali per la gestione del traffico e la sicurezza degli utenti della strada. Esistono vari tipi di segnali, ognuno con uno scopo specifico.</p>
+            <div class="grid-container">
+                <div>
+                    <h3>Segnali di Divieto</h3>
+                    <p>Indicano azioni vietate, come il divieto di sosta o il limite di velocità. Sono spesso di colore rosso o blu.</p>
+                </div>
+                <div>
+                    <h3>Segnali di Precedenza</h3>
+                    <p>Indicazioni che determinano chi ha diritto di passaggio in un incrocio, come il segnale di stop o la precedenza a destra.</p>
+                </div>
+                <div>
+                    <h3>Segnali di Avviso</h3>
+                    <p>Segnalano situazioni di pericolo o cambiamenti nelle condizioni stradali, come curve pericolose o lavori in corso.</p>
+                </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Sezione Quiz -->
-        <section id="quiz" class="hidden">
-            <h2>Testa le tue conoscenze</h2>
-            <div id="quiz-content">
-                <p>1. Cosa significa un segnale di Stop?</p>
-                <button onclick="checkAnswer(this, true)">Fermarsi completamente</button>
-                <button onclick="checkAnswer(this, false)">Rallentare</button>
-                <button onclick="checkAnswer(this, false)">Accelerare</button>
+    <section id="sicurezza">
+        <div class="container">
+            <h2>Sicurezza Stradale</h2>
+            <p>La sicurezza stradale è una priorità per evitare incidenti. Tutti gli utenti della strada devono adottare comportamenti responsabili e consapevoli.</p>
+            <div class="grid-container">
+                <div>
+                    <h3>Cintura di Sicurezza</h3>
+                    <p>Indossare sempre la cintura di sicurezza è obbligatorio per tutti i passeggeri del veicolo, indipendentemente dalla loro posizione.</p>
+                </div>
+                <div>
+                    <h3>Protezione per i Ciclisti</h3>
+                    <p>I ciclisti devono utilizzare il casco e seguire le regole di circolazione per proteggere se stessi e gli altri utenti della strada.</p>
+                </div>
+                <div>
+                    <h3>Comportamento Responsabile</h3>
+                    <p>Evita di guidare sotto l'influenza di alcol o droghe, rispetta i limiti di velocità e presta attenzione alle condizioni atmosferiche.</p>
+                </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
-    <script>
-        function showSection(sectionId) {
-            document.querySelectorAll("section").forEach(section => {
-                section.classList.add("hidden");
-            });
-            document.getElementById(sectionId).classList.remove("hidden");
-        }
+    <footer>
+        <p>&copy; 2025 Educazione Stradale - Tutti i diritti riservati</p>
+    </footer>
 
-        function checkAnswer(button, isCorrect) {
-            if (isCorrect) {
-                alert("Corretto! Hai risposto bene.");
-            } else {
-                alert("Sbagliato! Riprova.");
-            }
-        }
-    </script>
 </body>
 </html>
