@@ -10,7 +10,7 @@ body {
 
 /* Style for the button container */
 .button-container {
-    display: flex;
+    display: center;
     justify-content: center;
     gap: 30px;
     margin-bottom: 50px; /* Space between buttons and dropdown */
