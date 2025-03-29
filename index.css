@@ -1,64 +1,72 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Style for the body */
-body {
-    font-family: Arial, sans-serif;
-    background-color: rgb(172, 172, 172);
-}
-
-/* Navbar styling */
-.navbar {
-    list-style-type: none;
-    background-color: #333;
+.button-container {
     display: flex;
     justify-content: center;
-    padding: 10px;
-    margin: 0;
+    margin-top: 50px;
+    gap: 20px;
 }
 
-.navbar > li {
-    position: relative;
-}
-
-.navbar > li > a {
+.main-button {
+    padding: 15px 30px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    background-color: #4CAF50;
     color: white;
-    text-decoration: none;
-    padding: 10px 20px;
-    display: block;
-    text-align: center;
+    border-radius: 5px;
+    transition: background-color 0.3s;
 }
 
-/* Dropdown styling */
+.main-button:hover {
+    background-color: #45a049;
+}
+
+/* Style for the dropdown */
 .dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-button {
+    padding: 15px 30px;
+    font-size: 16px;
+    cursor: pointer;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.dropdown-button:hover {
+    background-color: #45a049;
+}
+
+/* Dropdown content */
+.dropdown-content {
     display: none;
     position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: #444;
-    min-width: 200px;
-    list-style-type: none;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
 }
 
-.dropdown li a {
-    color: white;
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
     text-decoration: none;
-    padding: 10px;
     display: block;
 }
 
-/* Hover effect for the dropdown */
-.navbar > li:hover > .dropdown {
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
     display: block;
 }
 
-/* Styling for the title */
 .centered-title {
     text-align: center;
     margin-top: 50px;
-    font-size: 2rem;
-    color: #333;
 }
