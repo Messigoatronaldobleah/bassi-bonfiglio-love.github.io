@@ -1,0 +1,64 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Style for the body */
+body {
+    font-family: Arial, sans-serif;
+    background-color: rgb(172, 172, 172);
+}
+
+/* Navbar styling */
+.navbar {
+    list-style-type: none;
+    background-color: #333;
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    margin: 0;
+}
+
+.navbar > li {
+    position: relative;
+}
+
+.navbar > li > a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    display: block;
+    text-align: center;
+}
+
+/* Dropdown styling */
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #444;
+    min-width: 200px;
+    list-style-type: none;
+}
+
+.dropdown li a {
+    color: white;
+    text-decoration: none;
+    padding: 10px;
+    display: block;
+}
+
+/* Hover effect for the dropdown */
+.navbar > li:hover > .dropdown {
+    display: block;
+}
+
+/* Styling for the title */
+.centered-title {
+    text-align: center;
+    margin-top: 50px;
+    font-size: 2rem;
+    color: #333;
+}
