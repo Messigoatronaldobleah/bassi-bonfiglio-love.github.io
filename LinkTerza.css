@@ -8,11 +8,11 @@ body {
     font-family: Arial, sans-serif;
 }
 
-
+/* Style for the header to position the back button */
 header {
-    
+    position: absolute;
     top: 10px;
-    left: 100px;
+    left: 10px;
 }
 
 .back-button {
@@ -21,7 +21,7 @@ header {
     color: black;
 }
 
-
+/* Style for the dropdown container */
 .dropdown-container {
     display: flex;
     flex-direction: column;
