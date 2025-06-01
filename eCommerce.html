@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Shop E-Commerce</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f5f5f5; }
+    header, footer { background: #333; color: #fff; text-align: center; padding: 10px; }
+    .container { max-width: 1000px; margin: auto; padding: 20px; }
+    .upload-box, .welcome, .catalog, .product-detail, .cart, .receipt { display: none; }
+    .grid { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+    .card { background: #fff; padding: 10px; border-radius: 5px; width: 200px; text-align: center; box-shadow: 0 0 5px rgba(0,0,0,0.1); }
+    .card img { width: 100%; height: 150px; object-fit: cover; }
+    button { padding: 10px; background: #333; color: #fff; border: none; cursor: pointer; }
+    .cart-list, .receipt-list { list-style: none; padding: 0; }
+    @media print {
+      header, footer, .no-print, .upload-box, .welcome, .catalog, .product-detail, .cart { display: none !important; }
+      .receipt { display: block !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <header><h1>Negozio Online</h1></header>
+
+  <div class="container">
+    <!-- Pagina Upload -->
+    <div class="upload-box">
+      <h2>Carica il file JSON</h2>
+      <input type="file" id="jsonFile">
+      <br><br>
+      <button onclick="uploadJson()">Carica</button>
+    </div>
+
+    <!-- Pagina Benvenuto -->
+    <div class="welcome">
+      <h2>Benvenuto, <span id="userName"></span>!</h2>
+      <button onclick="showCatalog()">Vai al Catalogo</button>
+    </div>
+
+    <!-- Catalogo -->
+    <div class="catalog">
+      <h2>Prodotti</h2>
+      <div class="grid" id="productGrid"></div>
+    </div>
+
+    <!-- Dettaglio Prodotto -->
+    <div class="product-detail">
+      <h2 id="detailTitle"></h2>
+      <img id="detailImage" src="" style="width:300px">
+      <p id="detailDesc"></p>
+      <p id="detailPrice"></p>
+      <button onclick="addToCart()">Aggiungi al carrello</button>
+      <button onclick="showCatalog()">Indietro</button>
+    </div>
+
+    <!-- Carrello -->
+    <div class="cart">
+      <h2>Carrello</h2>
+      <ul class="cart-list" id="cartItems"></ul>
+      <p id="totalPrice"></p>
+      <button onclick="showReceipt()">Conferma Ordine</button>
+    </div>
+
+    <!-- Scontrino -->
+    <div class="receipt">
+      <h2>Scontrino</h2>
+      <p>Acquirente: <span id="receiptUser"></span></p>
+      <ul class="receipt-list" id="receiptItems"></ul>
+      <p><strong>Totale: <span id="receiptTotal"></span></strong></p>
+      <button class="no-print" onclick="window.print()">Stampa PDF</button>
+    </div>
+  </div>
+
+  <footer><p>© 2025 E-Commerce Demo</p></footer>
+
+  <script>
+    let jsonData = null;
+    let selectedProduct = null;
+    let cart = [];
+
+    document.addEventListener("DOMContentLoaded", () => {
+      document.querySelector(".upload-box").style.display = "block";
+    });
+
+    function uploadJson() {
+      const fileInput = document.getElementById('jsonFile');
+      const file = fileInput.files[0];
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        jsonData = JSON.parse(e.target.result);
+        localStorage.setItem("jsonData", JSON.stringify(jsonData));
+        document.querySelector(".upload-box").style.display = "none";
+        document.querySelector(".welcome").style.display = "block";
+        document.getElementById("userName").innerText = jsonData.user.nome;
+      };
+      reader.readAsText(file);
+    }
+
+    function showCatalog() {
+      document.querySelector(".welcome").style.display = "none";
+      document.querySelector(".product-detail").style.display = "none";
+      document.querySelector(".cart").style.display = "none";
+      document.querySelector(".catalog").style.display = "block";
+      const grid = document.getElementById("productGrid");
+      grid.innerHTML = '';
+      jsonData.prodotti.forEach((p, index) => {
+        const div = document.createElement("div");
+        div.className = "card";
+        div.innerHTML = `
+          <img src="${p.immagine}" alt="${p.modello}">
+          <h3>${p.modello}</h3>
+          <p>€ ${p.prezzo.toFixed(2)}</p>
+          <button onclick="showProduct(${index})">Dettagli</button>
+        `;
+        grid.appendChild(div);
+      });
+    }
+
+    function showProduct(index) {
+      selectedProduct = jsonData.prodotti[index];
+      document.querySelector(".catalog").style.display = "none";
+      document.querySelector(".product-detail").style.display = "block";
+      document.getElementById("detailTitle").innerText = selectedProduct.marca + " " + selectedProduct.modello;
+      document.getElementById("detailImage").src = selectedProduct.immagine;
+      document.getElementById("detailDesc").innerText = selectedProduct.descrizione;
+      document.getElementById("detailPrice").innerText = "Prezzo: € " + selectedProduct.prezzo.toFixed(2);
+    }
+
+    function addToCart() {
+      cart.push(selectedProduct);
+      alert("Prodotto aggiunto al carrello");
+      showCatalog();
+    }
+
+    function showCart() {
+      document.querySelector(".catalog").style.display = "none";
+      document.querySelector(".product-detail").style.display = "none";
+      document.querySelector(".cart").style.display = "block";
+      const list = document.getElementById("cartItems");
+      list.innerHTML = '';
+      let total = 0;
+      cart.forEach((item, i) => {
+        total += item.prezzo;
+        const li = document.createElement("li");
+        li.innerText = item.marca + " " + item.modello + " - € " + item.prezzo.toFixed(2);
+        list.appendChild(li);
+      });
+      document.getElementById("totalPrice").innerText = "Totale: € " + total.toFixed(2);
+    }
+
+    function showReceipt() {
+      document.querySelector(".cart").style.display = "none";
+      document.querySelector(".receipt").style.display = "block";
+      const user = jsonData.user;
+      document.getElementById("receiptUser").innerText = `${user.nome} ${user.cognome}, ${user.indirizzo}, ${user.città}`;
+      const ul = document.getElementById("receiptItems");
+      ul.innerHTML = '';
+      let total = 0;
+      cart.forEach(item => {
+        const li = document.createElement("li");
+        li.innerText = `${item.marca} ${item.modello} - € ${item.prezzo.toFixed(2)}`;
+        total += item.prezzo;
+        ul.appendChild(li);
+      });
+      document.getElementById("receiptTotal").innerText = "€ " + total.toFixed(2);
+    }
+  </script>
+</body>
+</html>

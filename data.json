@@ -1,0 +1,70 @@
+{
+  "user": {
+    "nome": "Mario",
+    "cognome": "Rossi",
+    "username": "mrossi",
+    "password": "b64encryptedstring",
+    "indirizzo": "Via Roma 10",
+    "città": "Milano",
+    "cap": "20100",
+    "telefono": "3331234567"
+  },
+  "prodotti": [
+    {
+      "marca": "Samsung",
+      "modello": "S13",
+      "descrizione": "Smartphone Samsung S13 con display AMOLED",
+      "immagine": "assets/images/samsung_s13.jpg",
+      "prezzo": 699.99
+    },
+    {
+      "marca": "Apple",
+      "modello": "iPhone 14",
+      "descrizione": "iPhone 14 con chip A15 Bionic",
+      "immagine": "assets/images/iphone14.jpg",
+      "prezzo": 999.00
+    },
+    {
+      "marca": "Xiaomi",
+      "modello": "Mi 12",
+      "descrizione": "Smartphone con tripla fotocamera AI",
+      "immagine": "assets/images/xiaomi_mi12.jpg",
+      "prezzo": 499.00
+    },
+    {
+      "marca": "OnePlus",
+      "modello": "10 Pro",
+      "descrizione": "Display QHD+ 120Hz e ricarica rapida",
+      "immagine": "assets/images/oneplus10pro.jpg",
+      "prezzo": 799.00
+    },
+    {
+      "marca": "Motorola",
+      "modello": "Edge 30",
+      "descrizione": "Motorola Edge 30 con fotocamera da 50MP",
+      "immagine": "assets/images/motorola_edge30.jpg",
+      "prezzo": 599.00
+    },
+    {
+      "marca": "Realme",
+      "modello": "GT Neo 3",
+      "descrizione": "Performance da gaming, ricarica 150W",
+      "immagine": "assets/images/realme_gtneo3.jpg",
+      "prezzo": 399.00
+    },
+    {
+      "marca": "Google",
+      "modello": "Pixel 7",
+      "descrizione": "Fotocamera Google AI e Android puro",
+      "immagine": "assets/images/pixel7.jpg",
+      "prezzo": 649.00
+    },
+    {
+      "marca": "Huawei",
+      "modello": "P50 Pro",
+      "descrizione": "Huawei P50 con zoom ottico avanzato",
+      "immagine": "assets/images/huawei_p50.jpg",
+      "prezzo": 729.00
+    }
+  ]
+}
